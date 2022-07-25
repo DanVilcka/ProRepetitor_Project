@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+}
+
+
+.rooms{
+    border-right: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+    width: 17vw;
+    height: 99vh;
+}
+.Chats{
+    display: inline-block;
+    vertical-align: top;
+    width: 80vw;
+    height: 99vh;
+    float: right;
+}
+.chat_index{
+    display: inline-block;
+}
+
+textarea{
+    resize: none;
+    border: none;
+    margin: 0;
+    padding: 3px;
+}
+
+.find{
+    padding-bottom: 10px;
+}
+
+.rooms_menu li{
+    width: 100%;
+    text-decoration: none;
+    font-family: sans-serif;
+    display: inline-block;
+    padding-top: 10px;
+    border-bottom: 1px solid black;
+}
+.rooms_menu {
+    width: 100%;
+    margin: 0;
+    padding-inline-start: 0;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="TaskProjectConfiguration">
+    <server type="GitHub" url="https://github.com" />
+  </component>
+  <component name="UnattendedHostPersistenceState">
+    <option name="openedFilesInfos">
+      <list>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="3281" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/pages/chat/client/index.php" />
+        </OpenedFileInfo>
+      </list>
+    </option>
+  </component>
+</project>

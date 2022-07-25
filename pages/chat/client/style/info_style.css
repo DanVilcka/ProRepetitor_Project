@@ -1,0 +1,19 @@
+#oponent_info{
+    border-bottom: 1px solid black;
+    width: 100%;
+    height: 5vh;
+    text-align: center;
+    display: inline-block;
+}
+#name_oponent{
+    display: inline-block;
+}
+
+#video{
+    display: inline-block;
+}
+
+.video_img{
+    width: 32px;
+    height: 32px;
+}

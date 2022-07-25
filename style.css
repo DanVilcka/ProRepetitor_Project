@@ -1,0 +1,182 @@
+html {
+	background: white;
+	height: 100vh;
+	width: 99vw;
+	margin: 0;
+	padding: 0;
+}
+#header {
+	border-bottom: 1px solid black;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
+#header h1{
+	text-align: center;
+	margin: 0;
+}
+.clear{
+	clear: both;
+}
+#hello{
+	text-align: center;
+	top: 50vh;
+}
+.auth_block{
+	width: 240px;
+	margin: 10px auto;
+	text-align: center;
+	padding: 10px;
+
+}
+.auth_block a{
+	padding: 10px;
+	color: black;
+	width: 110px;
+	height: 30px;
+	text-decoration: none;
+}
+.window{
+	display: inline-block;
+	width: 99%;
+}
+
+#link_register, #link_auth{
+	display: inline-block;
+}
+#link_register a{
+	border: 1px solid black;
+	text-align: center;
+}
+#link_auth a, #link_logout a{
+
+	border: 1px solid black;
+	text-align: center;
+}
+
+#form_register{
+	border: 1px solid black;
+	width: 25vw;
+	height: 50vh;
+	margin: 10px auto;
+}
+#form_auth{
+	border: 1px solid black;
+	width: 25vw;
+	height: 30vh;
+	margin: 10px auto;
+}
+#authorized h2{
+	text-align: center;
+}
+
+.message_error{
+	font-size: 40px;
+	color: #cc0000;
+	text-align: center;
+}
+.success_message{
+	font-size: 40px;
+	color: green;
+	text-align: center;
+}
+
+.menu{
+	margin-top: 0;
+	display: inline-block;
+	margin-left: 0;
+	list-style-type: none;
+	padding: 10px 10px 0;
+}
+.menu a{
+	text-decoration: none;
+	font-family: sans-serif;
+	display: inline-block;
+	padding: 10px 20px;
+	border: 1px solid black;
+}
+.menu li{
+	margin: 5px;
+}
+
+.Menu{
+	min-width: 160px;
+	width: 9vw;
+	height: 90vh;
+	display: inline-block;
+	vertical-align: top;
+	border-right: 1px solid black;
+}
+.OpenSpace{
+	display: inline-block;
+	border-style: none;
+	width: 85vw;
+	height: 90vh;
+	vertical-align: top;
+	float: right;
+}
+
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+a:hover {
+	color: black;
+	text-decoration: none;
+}
+a:active {
+	color: black;
+	text-decoration: none;
+}
+
+.horizontal_stack{
+	display: inline-block;
+}
+.info{
+	margin-left: 200px;
+	margin-top: 20px;
+	width: 400px;
+	border-radius: 20px;
+	border: 1px solid black;
+	display: inline-block;
+	padding: 20px;
+}
+.info p{
+	height: 20px;
+	border-radius: 20px;
+	border: 1px solid black;
+	padding: 10px;
+}
+.info a{
+	float: right;
+}
+.icon{
+	vertical-align: top;
+	display: inline-block;
+}
+.icon img{
+	height: 300px;
+	width: 300px;
+}
+
+td{
+	font-size: 20px;
+	padding-left: 50px;
+}
+table#reg{
+	width: 100%;
+	height: 40vh;
+}
+td input{
+	width: 9vw;
+	height: 3vh;
+}
+table#auth{
+	width: 100%;
+	height: 20vh;
+}
