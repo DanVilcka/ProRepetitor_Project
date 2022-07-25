@@ -7,8 +7,7 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="3281" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/pages/chat/client/index.php" />
+          <option name="fileUrl" value="mock:///Diff" />
         </OpenedFileInfo>
       </list>
     </option>
