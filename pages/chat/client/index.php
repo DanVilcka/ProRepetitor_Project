@@ -1,5 +1,5 @@
 <?php
-
+include $_SERVER['DOCUMENT_ROOT'] . "/pages/chat/server/database.php";
 session_start();
 
 $status = $_SESSION['status'];
@@ -8,17 +8,7 @@ $id = $_SESSION['id'];
 $db = new mysqli("danvil1z.beget.tech", "danvil1z_adm", "AdminDb#0903", "danvil1z_adm");
 $db->set_charset('utf8');
 
-function get_r(): array
-{
-    global $id;
-    global $db;
-    $int = $db->query("SELECT * FROM rooms WHERE `id_user` = '" . $id . "' OR `id_teacher` = '" . $id . "'  ");
-    $info = array();
-    while ($row = mysqli_fetch_assoc($int)) {
-        $info[] = $row;
-    }
-    return $info;
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -52,7 +42,7 @@ function get_r(): array
                             foreach ($row as $room):
                                 ?>
                                 <li>
-                                    <?php echo $room['id_room'], ' ', $room['id_teacher'], ' ', $room['id_user'] ?>
+                                    <?php echo $room['id_room'], ' ', $room['id_teacher'] ?>
                                 </li>
                             <?php
                             endforeach;
@@ -75,7 +65,7 @@ function get_r(): array
                         $result = $db -> query("SELECT * FROM users WHERE id = '".$id_find."'");
                         if($result -> num_rows == 1){
                             while ($row = $result->fetch_assoc()) {
-                                print_r('<br>' . $row['first_name'] . ' ' . $row['last_name'] . '<button onclick="add_chat()" style="float: right; border: 1px solid black"> + </button>');
+                                print_r($row['first_name'] . ' ' . $row['last_name'] . '<button onclick="add_chat()" style="float: right; border: 1px solid black"> + </button>');
                             }
                         }
 
@@ -94,16 +84,17 @@ function get_r(): array
                         console.log(result);
                     }
                 </script>
-            <div class="rooms_div" style="border-top: 1px solid black; height: 90vh; width: 100%">
-                <h2 style="text-align: center"> Чаты </h2>
-                <ul class="rooms_menu">
-                    <?php
+                    <div class="rooms_div"
+                         style="margin-top: 1vh; border-top: 1px solid black; height: 89vh; width: 100%">
+                        <h2 style="text-align: center"> Чаты </h2>
+                        <ul class="rooms_menu">
+                            <?php
                     $row = get_r();
                     foreach ($row as $room):
-                    ?>
-                    <li>
-                        <?php echo $room['id_room'],' ', $room['id_teacher'], ' ', $room['id_user']?>
-                    </li>
+                        ?>
+                        <li>
+                            <?php echo $room['id_room'], ' ', $room['id_user'] ?>
+                        </li>
                     <?php
                     endforeach;
                     ?>

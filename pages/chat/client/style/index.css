@@ -3,14 +3,20 @@ body{
 }
 
 
-.rooms{
+.rooms {
     border-right: 1px solid black;
     display: inline-block;
     vertical-align: top;
     width: 17vw;
     height: 99vh;
 }
-.Chats{
+
+.rooms h2 {
+    margin-block-start: 0;
+    margin-block-end: 0.5em;
+}
+
+.Chats {
     display: inline-block;
     vertical-align: top;
     width: 80vw;
@@ -28,8 +34,8 @@ textarea{
     padding: 3px;
 }
 
-.find{
-    padding-bottom: 10px;
+.find {
+    padding-bottom: 3%;
 }
 
 .rooms_menu li{
