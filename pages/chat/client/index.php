@@ -1,12 +1,25 @@
 <?php
 
-    session_start();
+session_start();
 
-    $status = $_SESSION['status'];
-    $id = $_SESSION['id'];
+$status = $_SESSION['status'];
+$id = $_SESSION['id'];
 
-    $db = new mysqli("danvil1z.beget.tech", "danvil1z_adm", "AdminDb#0903", "danvil1z_adm");
-    $db->set_charset('utf8');
+$db = new mysqli("danvil1z.beget.tech", "danvil1z_adm", "AdminDb#0903", "danvil1z_adm");
+$db->set_charset('utf8');
+
+function get_r(): array
+{
+    global $id;
+    global $db;
+    $int = $db->query("SELECT * FROM rooms WHERE `id_user` = '" . $id . "' OR `id_teacher` = '" . $id . "'  ");
+    $info = array();
+    while ($row = mysqli_fetch_assoc($int)) {
+        $info[] = $row;
+    }
+    return $info;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +42,24 @@
 
         <div class="rooms">
             <?php
-                if ($status==2){
-                    
-            ?>
-            <?php
+                if ($status==2) {
+                    ?>
+                    <div class="rooms_div" style="height: 90vh; width: 100%">
+                        <h2 style="text-align: center"> Чаты </h2>
+                        <ul class="rooms_menu">
+                            <?php
+                            $row = get_r();
+                            foreach ($row as $room):
+                                ?>
+                                <li>
+                                    <?php echo $room['id_room'], ' ', $room['id_teacher'], ' ', $room['id_user'] ?>
+                                </li>
+                            <?php
+                            endforeach;
+                            ?>
+                        </ul>
+                    </div>
+                <?php
                 } elseif ($status==1) {
             ?>
             <div class="find">
@@ -60,20 +87,6 @@
                             }
                             return (bool)$add;
                         }
-
-                        function get_r(): array
-                        {
-                            global $id;
-                            global $db;
-                            $int = $db -> query("SELECT * FROM rooms WHERE `id_user` = '".$id."' OR `id_teacher` = '".$id."'  ");
-                            $info = array();
-                            while($row = mysqli_fetch_assoc($int)){
-                                $info[] = $row;
-                            }
-                            return $info;
-                        }
-
-
                 ?>
                 <script>
                     function add_chat(){
