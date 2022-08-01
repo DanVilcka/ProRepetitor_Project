@@ -46,8 +46,13 @@ textarea{
     padding-top: 10px;
     border-bottom: 1px solid black;
 }
+
 .rooms_menu {
     width: 100%;
     margin: 0;
     padding-inline-start: 0;
+}
+
+.rooms_menu a {
+    width: 100%;
 }

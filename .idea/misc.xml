@@ -7,21 +7,7 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="fileUrl" value="das://590c6d30-7166-40e3-a5d9-386707d44162/schema/danvil1z_adm/table/rooms" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="fileUrl" value="das://590c6d30-7166-40e3-a5d9-386707d44162/schema/danvil1z_adm/table/users" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="123" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/pages/chat/server/database.php" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="223" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/pages/chat/client/style/index.css" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="2456" />
+          <option name="caretOffset" value="454" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/pages/chat/client/index.php" />
         </OpenedFileInfo>
       </list>

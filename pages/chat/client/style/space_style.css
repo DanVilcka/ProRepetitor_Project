@@ -1,4 +1,18 @@
-#space_for_messages{
-    height: 75vh;
+#space_for_messages {
+    height: 73vh;
     width: 100%;
+    overflow: auto;
+    padding: 1vh;
+}
+
+.list_of_mess div {
+    border: 1px solid black;
+    padding: 0.5vh 1vh;
+    border-radius: 10px;
+}
+
+.for_scroll {
+    height: 73vh;
+    width: 100%;
+    overflow: hidden;
 }

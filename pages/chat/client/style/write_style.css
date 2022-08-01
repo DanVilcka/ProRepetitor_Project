@@ -1,59 +1,104 @@
 #mess{
-  height: 18vh;
+    height: 16vh;
 }
 
-.buttons{
-  border-left: 1px solid black;
-  display: inline-block;
-  vertical-align: top;
-  width: 12%;
-  height: 18vh;
+.buttons {
+    border-left: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+    width: 12%;
+    height: 16vh;
+    float: right;
 }
 
-#write{
-  display: inline-block;
-  vertical-align: top;
-  width: 85%;
-  height: 17vh;
+#write {
+    display: inline-block;
+    vertical-align: top;
+    width: 85%;
+    height: 16vh;
+    border: 1px solid black;
 
 }
 
-.spbut{
-  color: black;
-  list-style-type: none;
-  height: 18vh;
-  padding: 0;
-  margin: 0;
-}
-.spbut a{
-  text-decoration: none;
-  font-family: sans-serif;
-  display: inline-block;
-  padding: 10px 20px;
-  border: 1px solid black;
-}
-.spbut li{
-  margin: 5px;
-}
-a#chick{
-  font-size: 10px;
-}
-#search_form{
-  display: inline-block;
-}
-#search_form input{
-  display: inline-block;
+.spbut {
+    color: black;
+    list-style-type: none;
+    height: 16vh;
+    padding: 0;
+    margin: 0;
 }
 
+input#send {
+    font-size: 2vh;
+}
+
+.spbut input {
+    display: inline-block;
+    padding: 10px 10px;
+    border: 1px solid black;
+    margin: 0;
+    background-color: transparent;
+    width: 100%
+}
+
+.spbut ul {
+    width: 100%;
+    height: 16vh;
+}
+
+.spbut li {
+    margin-top: 1vh;
+    margin-left: 0.1vw;
+}
+
+#search_form {
+    display: inline-block;
+}
+
+#search_form input {
+    display: inline-block;
+}
+
+.chick_input .btn-tertiary {
+    padding: 0;
+    margin: auto;
+    display: block;
+    border: 1px solid black
+}
+
+.chick_input .btn-tertiary:hover, .chick_input .btn-tertiary:focus {
+    color: #888;
+    border-color: #888
+}
+
+.chick_input .input-file {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1
+}
+
+.chick_input .input-file + .js-labelFile {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 2vh;
+    padding: 0 1%;
+    cursor: pointer
+}
 
 
 a:link {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
+
 a:visited {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 a:hover {
   color: black;

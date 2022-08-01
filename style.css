@@ -4,6 +4,7 @@ html {
 	width: 99vw;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
 #header {
 	border-bottom: 1px solid black;

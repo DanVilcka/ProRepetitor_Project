@@ -23,7 +23,6 @@ function getoptions($id)
 function update_info(): bool
 {
     global $db;
-    print_r($_POST);
     $str = trim($_POST['newVal']);
     $value = mysqli_real_escape_string($db, $str);
     $id = (int)$_POST['id'];
@@ -48,6 +47,4 @@ function update_info(): bool
             return false;
         }
     }
-
-
 }

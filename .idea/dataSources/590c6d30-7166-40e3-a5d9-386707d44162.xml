@@ -744,113 +744,144 @@ danvil1z\\_adm|schema||danvil1z_adm||UPDATE|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
-    <table id="228" parent="224" name="rooms">
+    <table id="228" parent="224" name="content">
       <Engine>InnoDB</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
-    <table id="229" parent="224" name="users">
+    <table id="229" parent="224" name="rooms">
       <Engine>InnoDB</Engine>
       <CollationName>utf8_general_ci</CollationName>
     </table>
-    <column id="230" parent="227" name="posted_on">
-      <DataType>datetime|0s</DataType>
+    <table id="230" parent="224" name="users">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8_general_ci</CollationName>
+    </table>
+    <column id="231" parent="227" name="id_chat">
+      <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="231" parent="227" name="user_name">
-      <DataType>varchar(255)|0s</DataType>
+    <column id="232" parent="227" name="id_sender">
+      <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="232" parent="227" name="message">
-      <DataType>text|0s</DataType>
+    <column id="233" parent="227" name="id_msg">
+      <AutoIncrement>241</AutoIncrement>
+      <DataType>int(15)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="233" parent="227" name="id_msg">
-      <DataType>int(5)|0s</DataType>
+    <column id="234" parent="227" name="text">
+      <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="234" parent="228" name="id_room">
-      <DataType>int(11)|0s</DataType>
+    <column id="235" parent="227" name="posted_on">
+      <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
-      <Position>1</Position>
+      <Position>5</Position>
     </column>
-    <column id="235" parent="228" name="id_user">
-      <DataType>int(5)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="236" parent="228" name="id_teacher">
-      <DataType>int(5)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <index id="237" parent="228" name="PRIMARY">
-      <ColNames>id_room</ColNames>
+    <index id="236" parent="227" name="PRIMARY">
+      <ColNames>id_msg</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="238" parent="228" name="PRIMARY">
+    <key id="237" parent="227" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="239" parent="229" name="id">
-      <AutoIncrement>30</AutoIncrement>
+    <column id="238" parent="228" name="id_msg">
+      <DataType>int(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="239" parent="228" name="text">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="240" parent="229" name="id_room">
+      <AutoIncrement>16</AutoIncrement>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="240" parent="229" name="status">
+    <column id="241" parent="229" name="id_user">
+      <DataType>int(5)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="242" parent="229" name="id_teacher">
+      <DataType>int(5)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <index id="243" parent="229" name="PRIMARY">
+      <ColNames>id_room</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="244" parent="229" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="245" parent="230" name="id">
+      <AutoIncrement>32</AutoIncrement>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="246" parent="230" name="status">
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="241" parent="229" name="first_name">
+    <column id="247" parent="230" name="first_name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="242" parent="229" name="last_name">
+    <column id="248" parent="230" name="last_name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="243" parent="229" name="class">
+    <column id="249" parent="230" name="class">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="244" parent="229" name="login">
+    <column id="250" parent="230" name="login">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </column>
-    <column id="245" parent="229" name="password">
+    <column id="251" parent="230" name="password">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </column>
-    <column id="246" parent="229" name="phone">
+    <column id="252" parent="230" name="phone">
       <DataType>varchar(15)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <column id="247" parent="229" name="skype">
+    <column id="253" parent="230" name="skype">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
-    <index id="248" parent="229" name="PRIMARY">
+    <index id="254" parent="230" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="249" parent="229" name="PRIMARY">
+    <key id="255" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
