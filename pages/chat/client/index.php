@@ -1,7 +1,7 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/pages/chat/server/database.php";
-include $_SERVER['DOCUMENT_ROOT'] . "pages/chat/client/help/send.php";
 session_start();
+include $_SERVER['DOCUMENT_ROOT'] . "/pages/chat/server/database.php";
+
 
 $status = $_SESSION['status'];
 $id = $_SESSION['id'];
@@ -11,13 +11,15 @@ $db->set_charset('utf8');
 
 
 //view_chat
-if (isset($_GET['view_chat'])) {
+if (isset($_POST['view_chat'])) {
+
     //1 - выводим имя опонента
-    $name_oponent = $_GET['view_chat'];
+    $name_oponent = $_POST['view_chat'];
 
     //2 - выводим сообщения
-    $ident_room = $_GET['id_chat'];
 
+    $ident_room = $_POST['id_chat'];
+    $_SESSION['id_room'] = $ident_room;
 }
 ?>
 <!DOCTYPE html>
@@ -57,7 +59,7 @@ if (isset($_GET['view_chat'])) {
                         <li>
                             <?php
                             print_r('
-                                    <form action="" method="get">
+                                    <form action="" method="post">
                                         <input name="id_chat" type="hidden" value="' . $room['id_room'] . '"/>
                                         <input name="view_chat" type="submit" style="padding:0; margin:0; border:0; background-color:transparent; font-size: 2vh; width: 100%" value="' . $name_room . '" />
                                     </form>
@@ -86,16 +88,27 @@ if (isset($_GET['view_chat'])) {
                         $result = $db -> query("SELECT * FROM users WHERE id = '".$id_find."'");
                         if($result -> num_rows == 1){
                             while ($row = $result->fetch_assoc()) {
-                                print_r($row['first_name'] . ' ' . $row['last_name']);
+                                print_r($row['first_name'] . ' ' . $row['last_name'] . ' ');
                             }
                         }
 
                         function add_chat($id_find): bool
                         {
                             global $db, $id;
-                            if ($id_find != 0 and $id_find != $id) {
-                                $add_room = $db->query("INSERT INTO rooms (`id_teacher`, `id_user`) VALUES ('" . $id . "', '" . $id_find . "') ");
+                            $lev1 = $db->query("select * from users where id = ' " . $id_find . "'  ");
+                            if ($lev1->num_rows == 1) {
+                                $lev2 = $db->query("select * from rooms where (id_teacher = ' " . $id_find . "' and id_user = ' " . $id . "') or (id_teacher = '" . $id . "' and id_user = '" . $id_find . "') ");
+                                if ($lev2->num_rows == 0) {
+                                    //lev 3
+                                    if ($id_find != 0 and $id_find != $id) {
+                                        $add_room = $db->query("INSERT INTO rooms (`id_teacher`, `id_user`) VALUES ('" . $id . "', '" . $id_find . "') ");
 
+                                    }
+                                } else {
+                                    exit('<br><p> Пользователь уже добавлен</p>');
+                                }
+                            } else {
+                                exit('<br><p> Пользователь не найден</p>');
                             }
                             if (isset($add_room)) {
                                 return (bool)$add_room;
@@ -103,18 +116,17 @@ if (isset($_GET['view_chat'])) {
                                 return false;
                             }
                         }
-                ?>
-                <script>
-                    function add_chat(){
-                        let result = "<?php add_chat($id_find); ?> ";
-                        console.log(result);
-                    }
-                </script>
-                    <div class="rooms_div"
-                         style="margin-top: 1vh; border-top: 1px solid black; height: 89vh; width: 100%">
-                        <h2 style="text-align: center"> Чаты </h2>
-                        <ul class="rooms_menu">
-                            <?php
+
+            if (!empty($_POST['id_find'])) {
+                add_chat($_POST['id_find']);
+            }
+            ?>
+
+            <div class="rooms_div"
+                 style="margin-top: 1vh; border-top: 1px solid black; height: 89vh; width: 100%">
+                <h2 style="text-align: center"> Чаты </h2>
+                <ul class="rooms_menu">
+                    <?php
                     $row = get_r();
                     foreach ($row as $room):
                         $name_room = get_name($room['id_user']);
@@ -122,7 +134,7 @@ if (isset($_GET['view_chat'])) {
                         <li>
                             <?php
                             print_r('                                      
-                            <form action="" method="get">
+                            <form action="" method="post">
                                 <input name="id_chat" type="hidden" value="' . $room['id_room'] . '"/>
                                 <input name="view_chat" type="submit" style="padding:0; margin:0; border:0; background-color:transparent; font-size: 2vh; width: 100%" value="' . $name_room . '" />
                             </form>
@@ -159,7 +171,10 @@ if (isset($_GET['view_chat'])) {
                     <?php
                     if (isset($ident_room)) {
                         $messages = get_messages($ident_room);
-
+                        /*$last = array_pop($messages);
+                        $l_m_c = strtotime($last['posted_on']);
+                        $l_m_db = strtotime(last_mes($ident_room));
+                        if($l_m_c == $l_m_db){*/
                         foreach ($messages as $message):
                             $id = (int)$id;
                             $id_sender = (int)$message['id_sender'];
@@ -177,7 +192,9 @@ if (isset($_GET['view_chat'])) {
                             </li>
                         <?php
                         endforeach;
+
                     }
+                    /*update();*/
                     ?>
                 </ul>
             </div>
@@ -187,9 +204,9 @@ if (isset($_GET['view_chat'])) {
             block.scrollTop = block.scrollHeight
         </script>
 
-        <form id="mess" action="" method="post">
+        <form id="mess" action="index.php" method="post">
 
-            <label for="write"></label><textarea id="write" placeholder="Введите сообщение"></textarea>
+            <label for="write"></label><textarea name="write" id="write" placeholder="Введите сообщение"></textarea>
 
             <div class="buttons">
                 <ul class="spbut">
@@ -199,7 +216,7 @@ if (isset($_GET['view_chat'])) {
                             <span class="js-fileName">Загрузить файл</span>
                         </label>
                     </li>
-                    <li>
+                    <li class="click_input">
                         <input type="submit" id="send" name="send" value="Отправить"/>
                     </li>
                 </ul>
@@ -213,8 +230,5 @@ if (isset($_GET['view_chat'])) {
 
 </body>
 
-
-<?php
-?>
 
 </html>

@@ -1,17 +1,23 @@
 $(document).ready(function () {
+    $("#mess").submit(function (e) {
+        e.preventDefault();
+    });
     $("#send").click(function () {
-        let message = $("#write").val();
-        console.log(message);
-        $.ajax({
-            url: 'send.php',
-            type: 'POST',
-            data: {message: message},
-            success: function (res) {
-                console.log(res);
-            },
-            error: function () {
-                alert("Error!");
-            },
-        })
+        const message = $("#write").val().replace(/\n/g, '<br/>');
+        if (message === '') {
+            alert('Message Empty!');
+        } else {
+            console.log(message);
+            $.get("send.php?message=" + message)
+        }
+        resetForm(this.form)
     });
 });
+
+function resetForm(form) {
+    // clearing textarea
+    let text = form.getElementsByTagName('textarea');
+    for (let i = 0; i < text.length; i++)
+        text[i].value = '';
+    return false;
+}

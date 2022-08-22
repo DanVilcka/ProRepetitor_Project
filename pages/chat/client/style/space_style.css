@@ -6,6 +6,7 @@
 }
 
 .list_of_mess div {
+    margin-right: 1vw;
     border: 1px solid black;
     padding: 0.5vh 1vh;
     border-radius: 10px;

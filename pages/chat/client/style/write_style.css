@@ -71,6 +71,11 @@ input#send {
     border-color: #888
 }
 
+.click_input #send:hover, .click_input #send:focus {
+    color: #888;
+    border-color: #888
+}
+
 .chick_input .input-file {
     width: 0;
     height: 0;

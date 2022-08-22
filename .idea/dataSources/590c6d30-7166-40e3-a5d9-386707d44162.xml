@@ -767,7 +767,7 @@ danvil1z\\_adm|schema||danvil1z_adm||UPDATE|G</Grants>
       <Position>2</Position>
     </column>
     <column id="233" parent="227" name="id_msg">
-      <AutoIncrement>241</AutoIncrement>
+      <AutoIncrement>249</AutoIncrement>
       <DataType>int(15)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>

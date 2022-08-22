@@ -38,3 +38,20 @@ function get_messages($chat_id): array
     }
     return $arr;
 }
+
+/*function update(){
+    header('Refresh:10000');
+    header("location:javascript://history.go(-1)");
+}*/
+
+function last_mes($chat_id): string
+{
+    global $db;
+    $resa = $db->query("select * from chat where id_chat = '" . $chat_id . "'");
+    $messages = array();
+    while ($row = $resa->fetch_assoc()) {
+        $messages[] = $row;
+    }
+    $last_mes = array_pop($messages);
+    return $last_mes['posted_on'];
+}
