@@ -171,10 +171,6 @@ if (isset($_POST['view_chat'])) {
                     <?php
                     if (isset($ident_room)) {
                         $messages = get_messages($ident_room);
-                        /*$last = array_pop($messages);
-                        $l_m_c = strtotime($last['posted_on']);
-                        $l_m_db = strtotime(last_mes($ident_room));
-                        if($l_m_c == $l_m_db){*/
                         foreach ($messages as $message):
                             $id = (int)$id;
                             $id_sender = (int)$message['id_sender'];
@@ -194,7 +190,6 @@ if (isset($_POST['view_chat'])) {
                         endforeach;
 
                     }
-                    /*update();*/
                     ?>
                 </ul>
             </div>
