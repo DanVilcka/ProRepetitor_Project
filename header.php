@@ -19,7 +19,6 @@ session_start();
 
 	<h1><a href="index.php">ProRepetitor</a></h1>
 
-
 		<div class="clear"></div>
 </div>
 

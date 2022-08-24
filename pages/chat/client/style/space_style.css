@@ -1,6 +1,12 @@
-#space_for_messages {
+.for_scroll {
     height: 73vh;
     width: 100%;
+    overflow: hidden;
+}
+
+#space_for_messages {
+    height: 73vh;
+    width: 98%;
     overflow: auto;
     padding: 1vh;
 }
@@ -10,10 +16,4 @@
     border: 1px solid black;
     padding: 0.5vh 1vh;
     border-radius: 10px;
-}
-
-.for_scroll {
-    height: 73vh;
-    width: 100%;
-    overflow: hidden;
 }

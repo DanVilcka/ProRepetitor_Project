@@ -1,26 +1,29 @@
 <?php
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . "/pages/chat/server/database.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/pages/chat/server/show_chat.php";
 
 
 $status = $_SESSION['status'];
-$id = $_SESSION['id'];
+$id = (int)$_SESSION['id'];
 
 $db = new mysqli("danvil1z.beget.tech", "danvil1z_adm", "AdminDb#0903", "danvil1z_adm");
 $db->set_charset('utf8');
 
-
-//view_chat
 if (isset($_POST['view_chat'])) {
 
     //1 - выводим имя опонента
-    $name_oponent = $_POST['view_chat'];
+    $_SESSION['name_oponent'] = $_POST['view_chat'];
 
     //2 - выводим сообщения
 
-    $ident_room = $_POST['id_chat'];
-    $_SESSION['id_room'] = $ident_room;
+    $_SESSION['id_room'] = $_POST['id_chat'];
+
+    //3 - выводим чат
+    View_chat($_SESSION['id_room'], $_SESSION['name_oponent']);
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +44,6 @@ if (isset($_POST['view_chat'])) {
 
 <body>
 
-<div class=t_index">
-
     <div class="rooms">
         <?php
         if ($status == 2) {
@@ -54,12 +55,11 @@ if (isset($_POST['view_chat'])) {
                     $row = get_r();
                     foreach ($row as $room):
                         $name_room = get_name($room['id_teacher']);
-                        /*$id_room = $row['id_room'];*/
                         ?>
                         <li>
                             <?php
                             print_r('
-                                    <form action="" method="post">
+                                    <form id="id_room" action="" method="post">
                                         <input name="id_chat" type="hidden" value="' . $room['id_room'] . '"/>
                                         <input name="view_chat" type="submit" style="padding:0; margin:0; border:0; background-color:transparent; font-size: 2vh; width: 100%" value="' . $name_room . '" />
                                     </form>
@@ -76,14 +76,14 @@ if (isset($_POST['view_chat'])) {
                 } elseif ($status==1) {
             ?>
             <div class="find">
-                <form method="post"  id="search_form">
+                <form method="post" id="search_form">
                     <label>
-                        <input  type="text" name="id_find" style="border: 1px solid black">
+                        <input type="text" name="id_find" style="border: 1px solid black">
                     </label>
                     <input type="submit" value="Поиск">
                 </form>
             </div>
-                <?php
+            <?php
                         $id_find = trim($_POST['id_find']);
                         $result = $db -> query("SELECT * FROM users WHERE id = '".$id_find."'");
                         if($result -> num_rows == 1){
@@ -134,7 +134,7 @@ if (isset($_POST['view_chat'])) {
                         <li>
                             <?php
                             print_r('                                      
-                            <form action="" method="post">
+                            <form id="id_room" action="" method="post">
                                 <input name="id_chat" type="hidden" value="' . $room['id_room'] . '"/>
                                 <input name="view_chat" type="submit" style="padding:0; margin:0; border:0; background-color:transparent; font-size: 2vh; width: 100%" value="' . $name_room . '" />
                             </form>
@@ -143,85 +143,16 @@ if (isset($_POST['view_chat'])) {
                         </li>
                     <?php
                     endforeach;
-                            ?>
-                        </ul>
-                    </div>
-            <?php
-        }
-        ?>
-    </div>
-
-
-    <div class="Chats">
-
-        <div id="oponent_info">
-            <div id="name_oponent">
-                <?php
-                if (isset($name_oponent)) {
-                    print_r('<p style="width:100%; font-size: 3vh; margin-block-start: 0; margin-block-end: 0; margin: auto">' . $name_oponent . '</p>');
-                }
-                ?>
-            </div>
-            <a href="https://react-webrtc-call.herokuapp.com" style="float: right" id="video" target="_blank"><img
-                        src="help/камера.png" alt="Video" class="video_img"> </a>
-        </div>
-        <div class="for_scroll">
-            <div id="space_for_messages">
-                <ul class="list_of_mess" style="list-style-type: none; padding-inline-start: 0; ">
-                    <?php
-                    if (isset($ident_room)) {
-                        $messages = get_messages($ident_room);
-                        foreach ($messages as $message):
-                            $id = (int)$id;
-                            $id_sender = (int)$message['id_sender'];
-                            $text = $message['text'];
-
-                            ?>
-                            <li style="width: 100%; min-height: 5vh">
-                                <?php
-                                if ($id_sender == $id) {
-                                    print_r('<div style="float: right">' . $text . '</div> ');
-                                } else {
-                                    print_r('<div style="float: left">' . $text . '</div> ');
-                                }
-                                ?>
-                            </li>
-                        <?php
-                        endforeach;
-
-                    }
                     ?>
                 </ul>
             </div>
-        </div>
-        <script type="text/javascript">
-            let block = document.getElementById("space_for_messages");
-            block.scrollTop = block.scrollHeight
-        </script>
+            <?php
 
-        <form id="mess" action="index.php" method="post">
+        }
 
-            <label for="write"></label><textarea name="write" id="write" placeholder="Введите сообщение"></textarea>
-
-            <div class="buttons">
-                <ul class="spbut">
-                    <li class="chick_input">
-                        <input type="file" id="file" name="chick" class="input-file" value="Прикрепить"/>
-                        <label for="file" class="btn btn-tertiary js-labelFile">
-                            <span class="js-fileName">Загрузить файл</span>
-                        </label>
-                    </li>
-                    <li class="click_input">
-                        <input type="submit" id="send" name="send" value="Отправить"/>
-                    </li>
-                </ul>
-            </div>
-
-        </form>
-
+        ?>
     </div>
 
-</div>
 
 </body>
 

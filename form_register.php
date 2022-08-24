@@ -86,25 +86,31 @@ require_once("header.php");
                         <option value="11">11</option>
                     </select>
                 </label>
-			<span id="valid_email_message" class="mesage_error"></span>
-			</td>
-			</tr>
+                <span id="valid_email_message" class="mesage_error"></span>
+            </td>
+            </tr>
 
             <tr>
-                <td> Телефон: </td>
+                <td> Телефон:</td>
                 <td>
                     <label>
-                        <input name="phone" placeholder="+7XXXXXXXXXX" required="required">
+                        <script src="libs/jquery.maskedinput/dist/jquery.maskedinput.min.js"></script>
+                        <input id="phone" name="phone" required="required" placeholder="+7(999) 999-99-99">
+                        <script>
+                            $(function () {
+                                $("#phone").mask("+7(999) 999-99-99");
+                            });
+                        </script>
                     </label><br>
                     <span id="valid_email_message" class="message_error"></span>
                 </td>
             </tr>
 
-			<tr>
-			<td> Логин : </td>
-			<td>
-                <label>
-                    <input name="login" placeholder="Ivan" required="required">
+            <tr>
+                <td> Логин :</td>
+                <td>
+                    <label>
+                        <input name="login" placeholder="Ivan" required="required">
                 </label><br>
 			<span id="valid_email_message" class="message_error"></span>
 			</td>

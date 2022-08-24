@@ -56,3 +56,7 @@ textarea{
 .rooms_menu a {
     width: 100%;
 }
+
+li form {
+    margin-block-end: 0;
+}

@@ -7,15 +7,26 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="722" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/pages/chat/server/database.php" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="fileUrl" value="das://590c6d30-7166-40e3-a5d9-386707d44162/schema/danvil1z_adm/table/chat" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="7841" />
+          <option name="fileUrl" value="das://590c6d30-7166-40e3-a5d9-386707d44162/schema/danvil1z_adm/table/users" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="6200" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/pages/chat/client/index.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1453" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/pages/chat/server/show_chat.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="290" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/pages/chat/server/show_mes.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1067" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/pages/chat/client/js/chat_js.js" />
         </OpenedFileInfo>
       </list>
     </option>

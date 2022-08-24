@@ -3,6 +3,7 @@
 $db = new mysqli("danvil1z.beget.tech", "danvil1z_adm", "AdminDb#0903", "danvil1z_adm");
 $db->set_charset('utf8');
 
+$id = $_SESSION['id'];
 
 function get_r(): array
 {
@@ -15,7 +16,6 @@ function get_r(): array
     }
     return $info;
 }
-
 
 function get_name($id_form_rooms): string
 {
